@@ -98,6 +98,10 @@ pricing:
       plan: Custom
       price: '??'
 sales_process:
-  heading: This is a heading. It's working now.
+  heading: This is a heading. It's working now!!!
+  steps:
+    - description: asasfdasdf
+    - description: asdfasdf
+    - description: asdfasdfadfasdfasdf
 ---
 
