@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
+import Process from '../components/Process'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const ProductPageTemplate = ({
@@ -17,6 +18,7 @@ export const ProductPageTemplate = ({
   testimonials,
   fullImage,
   pricing,
+  salesProcess
 }) => (
   <div className="content">
     <div
@@ -95,6 +97,9 @@ export const ProductPageTemplate = ({
                 {pricing.heading}
               </h2>
               <p className="is-size-5">{pricing.description}</p>
+              
+              <h4>{salesProcess.heading}</h4>
+              <Process data={salesProcess.steps} />
               <Pricing data={pricing.plans} />
             </div>
           </div>
@@ -126,6 +131,10 @@ ProductPageTemplate.propTypes = {
     description: PropTypes.string,
     plans: PropTypes.array,
   }),
+  salesProcess: PropTypes.shape({
+    heading: PropTypes.string,
+    steps: PropTypes.array
+  })
 }
 
 const ProductPage = ({ data }) => {
@@ -143,6 +152,7 @@ const ProductPage = ({ data }) => {
         testimonials={frontmatter.testimonials}
         fullImage={frontmatter.full_image}
         pricing={frontmatter.pricing}
+        salesProcess={frontmatter.sales_process}
       />
     </Layout>
   )
@@ -223,6 +233,12 @@ export const productPageQuery = graphql`
         testimonials {
           author
           quote
+        }
+        sales_process {
+          heading
+          steps {
+            description
+          }
         }
         full_image {
           childImageSharp {
